@@ -14,14 +14,15 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="PKc-BJ-Wdm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.87614211090000005" green="1" blue="0.92920457899999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.87614211090000005" green="1" blue="0.92920457899999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="vG8-eq-uf4">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remindify Me!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bv1-tL-SHz">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
-                                    <color key="backgroundColor" red="0.87614211091968563" green="1" blue="0.929204579048591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.88439032560056463" green="0.98538559675216675" blue="0.87726094646249997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                     <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -35,6 +36,19 @@
                                 <constraint firstItem="bv1-tL-SHz" firstAttribute="leading" secondItem="Muf-cE-TKQ" secondAttribute="leading" id="mBb-W0-J6O"/>
                             </constraints>
                             <viewLayoutGuide key="safeArea" id="Muf-cE-TKQ"/>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="7XO-DE-GLu">
+                            <rect key="frame" x="0.0" y="327" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Hy-E9-0c7">
+                                    <rect key="frame" x="153" y="0.0" width="108" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <state key="normal" image="camera" catalog="system"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.87614211090000005" green="1" blue="0.92920457899999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="7ol-Ap-Dcx" customClass="ItemTableViewCell" customModule="RemindifyMe" customModuleProvider="target">
@@ -127,4 +141,7 @@
             <point key="canvasLocation" x="-1600" y="167"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" catalog="system" width="64" height="48"/>
+    </resources>
 </document>
