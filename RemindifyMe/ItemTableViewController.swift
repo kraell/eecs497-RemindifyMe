@@ -44,10 +44,20 @@ class ItemTableViewController: UITableViewController {
 
         let item = items[indexPath.row]
         cell.update(with: item)
+        cell.showsReorderControl = true
         return cell
     }
-
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            editingStyleForRowAt indexPath: IndexPath) ->
+        UITableViewCell.EditingStyle {
+            return .delete
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -56,17 +66,18 @@ class ItemTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            items.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: . automatic)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.
