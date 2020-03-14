@@ -16,6 +16,7 @@
 		D9860F1E241AB431007F229A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9860F0E2419AEDF007F229A /* Main.storyboard */; };
 		D9860F20241AB994007F229A /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9860F1F241AB994007F229A /* ItemTableViewController.swift */; };
 		D9860F22241AEDBE007F229A /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9860F21241AEDBE007F229A /* ItemTableViewCell.swift */; };
+		D99FFE7C241C68A000A26E85 /* AddEditItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99FFE7B241C68A000A26E85 /* AddEditItemTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D9860F1C241AADBA007F229A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D9860F1F241AB994007F229A /* ItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 		D9860F21241AEDBE007F229A /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		D99FFE7B241C68A000A26E85 /* AddEditItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditItemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				D9860F1C241AADBA007F229A /* Item.swift */,
 				D9860F21241AEDBE007F229A /* ItemTableViewCell.swift */,
 				D9860F1F241AB994007F229A /* ItemTableViewController.swift */,
+				D99FFE7B241C68A000A26E85 /* AddEditItemTableViewController.swift */,
 			);
 			path = RemindifyMe;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				D9860F1D241AADBA007F229A /* Item.swift in Sources */,
 				D9860F0D2419AEDF007F229A /* ViewController.swift in Sources */,
 				D9860F092419AEDF007F229A /* AppDelegate.swift in Sources */,
+				D99FFE7C241C68A000A26E85 /* AddEditItemTableViewController.swift in Sources */,
 				D9860F22241AEDBE007F229A /* ItemTableViewCell.swift in Sources */,
 				D9860F0B2419AEDF007F229A /* SceneDelegate.swift in Sources */,
 			);

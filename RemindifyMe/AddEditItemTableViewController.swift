@@ -1,21 +1,27 @@
 //
-//  ItemTableViewController.swift
+//  AddEditItemTableViewController.swift
 //  RemindifyMe
 //
-//  Created by Mohamed Mohamed on 3/12/20.
+//  Created by Mohamed Mohamed on 3/13/20.
 //  Copyright © 2020 Toasted Peanuts. All rights reserved.
 //
 
 import UIKit
 
-class ItemTableViewController: UITableViewController {
-    var items: [Item] = [
-        Item(name: "Banana", expiration_date: "2 days", image: #imageLiteral(resourceName: "banana")),
-        Item(name: "Milk", expiration_date: "1 week", image: #imageLiteral(resourceName: "milk"))
-    ]
+class AddEditItemTableViewController: UITableViewController {
+    var item: Item?
     
+    @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var expireDateTextField: UITextField!
+    @IBOutlet weak var itemNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let item = item {
+            itemNameTextField.text = item.name
+            expireDateTextField.text = item.expiration_date
+            itemImage.image = item.image
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,53 +31,27 @@ class ItemTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "EditItem" {
-            let indexPath = tableView.indexPathForSelectedRow!
-            let item = items[indexPath.row]
-            let top = segue.destination as! UINavigationController
-            let addEditItemTableViewController = top.topViewController as! AddEditItemTableViewController
-            addEditItemTableViewController.item = item
-        }
-    }
-
-
+/*
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return items.count
-        } else {
-            return 0
-        }
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
-
-
+*/
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        let item = items[indexPath.row]
-        cell.update(with: item)
-        cell.showsReorderControl = true
+        // Configure the cell...
+
         return cell
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
-    
-    override func tableView(_ tableView: UITableView,
-                            editingStyleForRowAt indexPath: IndexPath) ->
-        UITableViewCell.EditingStyle {
-            return .delete
-    }
-    
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -80,18 +60,17 @@ class ItemTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            items.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: . automatic)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-
+    */
 
     /*
     // Override to support rearranging the table view.
@@ -108,7 +87,14 @@ class ItemTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
