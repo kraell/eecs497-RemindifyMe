@@ -17,13 +17,27 @@ class ItemTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44.0
     }
-
+    
+    @IBAction func unwindToItemTable(unwindSegue: UIStoryboardSegue) {
+        guard unwindSegue.identifier == "saveUnwind" else { return }
+        let sourceViewController = unwindSegue.source as! AddEditItemTableViewController
+        
+        if let item = sourceViewController.item {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                items[selectedIndexPath.row] = item
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                
+            } else {
+                let newIndexPath = IndexPath(row: items.count, section: 0)
+                items.append(item)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+    }
+    
     // MARK: - Table view data source
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -38,7 +52,6 @@ class ItemTableViewController: UITableViewController {
             addEditItemTableViewController.item = item
         }
     }
-
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

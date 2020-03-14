@@ -92,7 +92,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qGy-q4-sYI">
                                                     <rect key="frame" x="105" y="0.0" width="289" height="105.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V88-kO-gQc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V88-kO-gQc">
                                                             <rect key="frame" x="0.0" y="0.0" width="144.5" height="105.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -169,6 +169,9 @@
                                                     <rect key="frame" x="20" y="5" width="374" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="y6W-Zc-33e" eventType="editingChanged" id="kN0-Gj-zjz"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -194,6 +197,9 @@
                                                     <rect key="frame" x="20" y="5" width="374" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="y6W-Zc-33e" eventType="editingChanged" id="Z57-VY-7D4"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -212,14 +218,29 @@
                             <outlet property="delegate" destination="y6W-Zc-33e" id="7Ex-8H-Qcd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Wje-Zh-CtP"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="Wje-Zh-CtP">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0bg-IP-1CU">
+                            <color key="tintColor" red="0.050627489849999999" green="0.74109317450000001" blue="0.067108231259999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="jT9-5o-pgw" kind="unwind" unwindAction="unwindToItemTableWithUnwindSegue:" id="6cq-jL-BSR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="7PO-YY-QFw">
+                            <color key="tintColor" red="0.050627489849999999" green="0.74109317450000001" blue="0.067108231259999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="jT9-5o-pgw" kind="unwind" identifier="saveUnwind" unwindAction="unwindToItemTableWithUnwindSegue:" id="GyM-fG-6AT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="expireDateTextField" destination="rFm-CE-p6n" id="GTn-VS-lKQ"/>
                         <outlet property="itemImage" destination="wn5-BA-Iqo" id="5jK-a3-uWP"/>
                         <outlet property="itemNameTextField" destination="0bs-Tk-Shm" id="IeK-D6-lDY"/>
+                        <outlet property="saveButton" destination="7PO-YY-QFw" id="WJQ-wR-RTj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1XU-1i-XqJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="jT9-5o-pgw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1079.7101449275362" y="-520.3125"/>
         </scene>

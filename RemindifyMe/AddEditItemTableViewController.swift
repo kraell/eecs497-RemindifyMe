@@ -11,6 +11,7 @@ import UIKit
 class AddEditItemTableViewController: UITableViewController {
     var item: Item?
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var expireDateTextField: UITextField!
     @IBOutlet weak var itemNameTextField: UITextField!
@@ -23,11 +24,30 @@ class AddEditItemTableViewController: UITableViewController {
             itemImage.image = item.image
         }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        updateSaveButtonState()
+    }
+    
+    func updateSaveButtonState() {
+        let itemNameText = itemNameTextField.text ?? ""
+        let expireDateText = expireDateTextField.text ?? ""
+        saveButton.isEnabled = !itemNameText.isEmpty && !expireDateText.isEmpty
+    }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    @IBAction func textEditingChanged(_ sender: UITextField) {
+        updateSaveButtonState()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        guard segue.identifier == "saveUnwind" else { return }
+        
+        let itemName = itemNameTextField.text ?? ""
+        let expireDate = expireDateTextField.text ?? ""
+        if let itemImage = itemImage.image {
+            item = Item(name: itemName, expiration_date: expireDate, image: itemImage)
+        } else {
+            item = Item(name: itemName, expiration_date: expireDate, image: #imageLiteral(resourceName: "banana"))
+        }
     }
 
     // MARK: - Table view data source
