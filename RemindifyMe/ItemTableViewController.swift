@@ -8,11 +8,21 @@
 
 import UIKit
 
-class ItemTableViewController: UITableViewController {
+class ItemTableViewController: UITableViewController,
+        UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var items: [Item] = [
         Item(name: "Banana", expiration_date: "2 days", image: #imageLiteral(resourceName: "banana")),
         Item(name: "Milk", expiration_date: "1 week", image: #imageLiteral(resourceName: "milk"))
     ]
+    
+    @IBAction func openCameraButton(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self;
+            myPickerController.sourceType = .camera
+            present(myPickerController, animated: true, completion: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
