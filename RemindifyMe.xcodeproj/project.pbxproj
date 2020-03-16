@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D90C4802242026A6000B4460 /* BarCodeScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C4801242026A6000B4460 /* BarCodeScannerController.swift */; };
 		D9860F092419AEDF007F229A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9860F082419AEDF007F229A /* AppDelegate.swift */; };
 		D9860F0B2419AEDF007F229A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9860F0A2419AEDF007F229A /* SceneDelegate.swift */; };
 		D9860F0D2419AEDF007F229A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9860F0C2419AEDF007F229A /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D90C4801242026A6000B4460 /* BarCodeScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScannerController.swift; sourceTree = "<group>"; };
 		D9860F052419AEDF007F229A /* RemindifyMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemindifyMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9860F082419AEDF007F229A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9860F0A2419AEDF007F229A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				D9860F21241AEDBE007F229A /* ItemTableViewCell.swift */,
 				D9860F1F241AB994007F229A /* ItemTableViewController.swift */,
 				D99FFE7B241C68A000A26E85 /* AddEditItemTableViewController.swift */,
+				D90C4801242026A6000B4460 /* BarCodeScannerController.swift */,
 			);
 			path = RemindifyMe;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				D99FFE7C241C68A000A26E85 /* AddEditItemTableViewController.swift in Sources */,
 				D9860F22241AEDBE007F229A /* ItemTableViewCell.swift in Sources */,
 				D9860F0B2419AEDF007F229A /* SceneDelegate.swift in Sources */,
+				D90C4802242026A6000B4460 /* BarCodeScannerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -58,7 +58,7 @@
                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <state key="normal" image="camera" catalog="system"/>
                                     <connections>
-                                        <action selector="openCameraButton:" destination="QfL-KM-roJ" eventType="touchUpInside" id="eve-GA-pbW"/>
+                                        <segue destination="J4R-8i-HYa" kind="presentation" id="cqQ-Dz-kOx"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -246,6 +246,72 @@
                 <exit id="jT9-5o-pgw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1079.7101449275362" y="-520.3125"/>
+        </scene>
+        <!--Scanner Controller-->
+        <scene sceneID="t8b-5O-7vJ">
+            <objects>
+                <viewController id="J4R-8i-HYa" userLabel="Scanner Controller" customClass="BarCodeScannerController" customModule="RemindifyMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aOU-qv-kLu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoj-Nw-Aye">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scan Barcode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i32-ul-hfJ">
+                                        <rect key="frame" x="129" y="11" width="156" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKb-J0-XIG">
+                                        <rect key="frame" x="8" y="25" width="48" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="8ih-ag-xHr" kind="unwind" unwindAction="unwindToItemTableWithUnwindSegue:" id="kXd-B1-Qwh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="IDS-m8-iis"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No barcode detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8M5-TH-Bnq">
+                                <rect key="frame" x="0.0" y="773" width="414" height="35"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="a4u-mU-TFg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8M5-TH-Bnq" firstAttribute="bottom" secondItem="79a-3Q-PpA" secondAttribute="bottom" id="5Z3-E1-ICh"/>
+                            <constraint firstItem="79a-3Q-PpA" firstAttribute="trailing" secondItem="8M5-TH-Bnq" secondAttribute="trailing" id="DU6-HB-umh"/>
+                            <constraint firstItem="aoj-Nw-Aye" firstAttribute="leading" secondItem="79a-3Q-PpA" secondAttribute="leading" id="DZt-hc-1vF"/>
+                            <constraint firstItem="aoj-Nw-Aye" firstAttribute="top" secondItem="79a-3Q-PpA" secondAttribute="top" id="PoM-0m-v5B"/>
+                            <constraint firstItem="8M5-TH-Bnq" firstAttribute="leading" secondItem="79a-3Q-PpA" secondAttribute="leading" id="mxr-DL-z0J"/>
+                            <constraint firstItem="79a-3Q-PpA" firstAttribute="trailing" secondItem="aoj-Nw-Aye" secondAttribute="trailing" id="tdm-og-XTG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="79a-3Q-PpA"/>
+                    </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="8M5-TH-Bnq" id="saF-Ts-el3"/>
+                        <outlet property="topbarView" destination="aoj-Nw-Aye" id="O2f-CE-6H6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r1b-Qs-Z8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="8ih-ag-xHr" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="697" y="198"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dHn-MR-vYO">
