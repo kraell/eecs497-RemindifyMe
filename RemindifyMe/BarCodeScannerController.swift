@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class BarCodeScannerController: UIViewController {
-    
+    var item: Item?
     @IBOutlet weak var messageLabel: UILabel!
     
     @IBOutlet weak var topbarView: UIView!
@@ -95,6 +95,19 @@ class BarCodeScannerController: UIViewController {
         }
         
         // MARK: - Helper methods
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    func downloadItemImage(from url: URL) {
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            DispatchQueue.main.async() {
+                self.item?.image = UIImage(data: data)!
+            }
+        }
+    }
 
         func showUPC(decodedURL: String) {
             
@@ -102,14 +115,25 @@ class BarCodeScannerController: UIViewController {
                 return
             }
             
-            let alertPrompt = UIAlertController(title: "UPC", message: "The barcode's UPC is \(decodedURL)", preferredStyle: .actionSheet)
-            let confirmAction = UIAlertAction(title: "Add item to list", style: UIAlertAction.Style.default, handler: { (action) -> Void in
-                
-                if let url = URL(string: decodedURL) {
-                    if UIApplication.shared.canOpenURL(url) {
-                        UIApplication.shared.open(url)
+            let itemRequest = ItemRequest(upc: decodedURL)
+            itemRequest.getItem { [weak self] result in
+                switch result {
+                case .success(let item):
+                    
+                    self?.item =
+                        Item(name: item.title, expiration_date: "", image: #imageLiteral(resourceName: "clear"))
+                    if item.images.count > 0 {
+                        let url = URL(string: item.images[0])
+                        self!.downloadItemImage(from: url!)
                     }
+                case .failure(let error):
+                    print(error)
                 }
+            }
+            
+            let alertPrompt = UIAlertController(title: "UPC", message: "Do you want to add UPC number \(decodedURL)?", preferredStyle: .actionSheet)
+            let confirmAction = UIAlertAction(title: "Add item to list", style: UIAlertAction.Style.default, handler: { _ in
+                self.performSegue(withIdentifier: "NewScannedObject", sender: nil)
             })
             
             let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
@@ -119,6 +143,15 @@ class BarCodeScannerController: UIViewController {
             
             present(alertPrompt, animated: true, completion: nil)
         }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "NewScannedObject" {
+            let top = segue.destination as! UINavigationController
+            let addEditItemTableViewController = top.topViewController as! AddEditItemTableViewController
+            addEditItemTableViewController.item = item
+        }
+    }
     
       private func updatePreviewLayer(layer: AVCaptureConnection, orientation: AVCaptureVideoOrientation) {
         layer.videoOrientation = orientation

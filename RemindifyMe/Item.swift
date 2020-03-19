@@ -9,6 +9,18 @@
 import Foundation
 import UIKit
 
+struct UpcResponse: Decodable {
+    var code: String
+    var total: Int
+    var offset: Int
+    var items:[ApiItem]
+}
+
+struct ApiItem: Decodable {
+    var title: String
+    var images: [String]
+}
+
 
 class Item {
     var name: String

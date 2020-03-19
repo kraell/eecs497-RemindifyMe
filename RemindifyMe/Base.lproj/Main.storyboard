@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.87614211090000005" green="1" blue="0.92920457899999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.87614211090000005" green="1" blue="0.92920457899999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="vG8-eq-uf4">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -32,7 +32,7 @@
                                     <color key="tintColor" red="0.04866963919666735" green="0.71243384804750354" blue="0.064513042457847586" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title="Add Item"/>
                                     <connections>
-                                        <segue destination="l2Z-zq-3kE" kind="presentation" id="KOx-d5-OnW"/>
+                                        <segue destination="l2Z-zq-3kE" kind="presentation" identifier="NewItem" id="KOx-d5-OnW"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -82,7 +82,7 @@
                                                             <rect key="frame" x="2.5" y="2.5" width="100" height="100.5"/>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.87614211090000005" green="1" blue="0.92920457899999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="cMI-Rn-ZOo" firstAttribute="leading" secondItem="H6K-kS-f2J" secondAttribute="leading" constant="2.5" id="C1z-a9-kNb"/>
                                                         <constraint firstAttribute="trailing" secondItem="cMI-Rn-ZOo" secondAttribute="trailing" constant="2.5" id="KpM-Nn-nPo"/>
@@ -119,7 +119,7 @@
                                         <constraint firstAttribute="trailing" secondItem="fHw-s9-keH" secondAttribute="trailing" constant="20" symbolic="YES" id="zYA-hu-Yz1"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.87614211090000005" green="1" blue="0.92920457899999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <connections>
                                     <outlet property="expireDate" destination="K6b-Ig-yOc" id="dwi-7m-XVp"/>
                                     <outlet property="itemImage" destination="cMI-Rn-ZOo" id="umk-Wd-TAv"/>
@@ -306,12 +306,13 @@
                     <connections>
                         <outlet property="messageLabel" destination="8M5-TH-Bnq" id="saF-Ts-el3"/>
                         <outlet property="topbarView" destination="aoj-Nw-Aye" id="O2f-CE-6H6"/>
+                        <segue destination="l2Z-zq-3kE" kind="presentation" identifier="NewScannedObject" modalPresentationStyle="fullScreen" id="3RW-iW-7fe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1b-Qs-Z8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="8ih-ag-xHr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="697" y="198"/>
+            <point key="canvasLocation" x="817" y="226"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dHn-MR-vYO">
