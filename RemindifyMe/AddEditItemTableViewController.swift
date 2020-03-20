@@ -15,8 +15,22 @@ class AddEditItemTableViewController: UITableViewController {
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var expireDateTextField: UITextField!
     @IBOutlet weak var itemNameTextField: UITextField!
+    
+    private var datePicker: UIDatePicker?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .date
+        
+        expireDateTextField.inputView = datePicker
+        
+        datePicker?.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        
+        view.addGestureRecognizer(tapGesture)
         
         if let item = item {
             itemNameTextField.text = item.name
@@ -24,6 +38,19 @@ class AddEditItemTableViewController: UITableViewController {
             itemImage.image = item.image
         }
 
+        updateSaveButtonState()
+    }
+    
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        expireDateTextField.text = dateFormatter.string(from: datePicker.date)
+        view.endEditing(true)
         updateSaveButtonState()
     }
     
