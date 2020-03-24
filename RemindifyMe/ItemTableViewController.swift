@@ -11,8 +11,8 @@ import UIKit
 class ItemTableViewController: UITableViewController,
         UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var items: [Item] = [
-        Item(name: "Banana", expiration_date: "2 days", image: #imageLiteral(resourceName: "banana")),
-        Item(name: "Milk", expiration_date: "1 week", image: #imageLiteral(resourceName: "milk"))
+        Item(name: "Banana", expiration_date: "03/27/2020", image: #imageLiteral(resourceName: "banana")),
+        Item(name: "Milk", expiration_date: "03/28/2020", image: #imageLiteral(resourceName: "milk"))
     ]
 
     override func viewDidLoad() {
