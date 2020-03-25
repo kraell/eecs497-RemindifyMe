@@ -11,10 +11,13 @@ import UIKit
 class AddEditItemTableViewController: UITableViewController {
     var item: Item?
     
+    @IBOutlet weak var notificationDaysOutlet: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var expireDateTextField: UITextField!
     @IBOutlet weak var itemNameTextField: UITextField!
+    @IBOutlet weak var daysBeforeLabel: UILabel!
+    @IBOutlet weak var notificationDateView: UIView!
     
     private var datePicker: UIDatePicker?
     
@@ -32,12 +35,17 @@ class AddEditItemTableViewController: UITableViewController {
         
         view.addGestureRecognizer(tapGesture)
         
+        notificationDateView.isHidden = true
         if let item = item {
             itemNameTextField.text = item.name
             expireDateTextField.text = item.expiration_date
             itemImage.image = item.image
+            if item.notificationDaysBefore != nil {
+                notificationDateView.isHidden = false
+                notificationDaysOutlet.text = item.notificationDaysBefore
+            }
         }
-
+        
         updateSaveButtonState()
     }
     
@@ -64,6 +72,23 @@ class AddEditItemTableViewController: UITableViewController {
         updateSaveButtonState()
     }
     
+    @IBAction func yesButtonClicked(_ sender: Any) {
+        notificationDateView.isHidden = false
+    }
+    
+    @IBAction func noButtonClicked(_ sender: Any) {
+        notificationDateView.isHidden = true
+    }
+    
+    @IBAction func notificationExpirationTextField(_ sender: UITextField) {
+        let text = notificationDaysOutlet.text
+        if text == "1" {
+            daysBeforeLabel.text = "day before expiration date"
+        } else {
+            daysBeforeLabel.text = "days before expiration date"
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard segue.identifier == "saveUnwind" else { return }
@@ -73,7 +98,10 @@ class AddEditItemTableViewController: UITableViewController {
         if let itemImage = itemImage.image {
             item = Item(name: itemName, expiration_date: expireDate, image: itemImage)
         } else {
-            item = Item(name: itemName, expiration_date: expireDate, image: #imageLiteral(resourceName: "banana"))
+            item = Item(name: itemName, expiration_date: expireDate, image: #imageLiteral(resourceName: "clear"))
+        }
+        if notificationDaysOutlet.text != "" {
+            item?.notificationDaysBefore = notificationDaysOutlet.text
         }
     }
 

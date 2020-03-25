@@ -26,6 +26,7 @@ class Item {
     var name: String
     var expiration_date: String
     var image: UIImage
+    var notificationDaysBefore: String?
     init(name: String, expiration_date: String, image: UIImage) {
         self.name = name
         self.expiration_date = expiration_date

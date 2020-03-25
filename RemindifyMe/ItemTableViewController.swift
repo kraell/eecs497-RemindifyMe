@@ -23,7 +23,12 @@ class ItemTableViewController: UITableViewController,
     }
     
     @IBAction func unwindToItemTable(unwindSegue: UIStoryboardSegue) {
-        guard unwindSegue.identifier == "saveUnwind" else { return }
+        guard unwindSegue.identifier == "saveUnwind" else {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            return
+        }
         let sourceViewController = unwindSegue.source as! AddEditItemTableViewController
         
         if let item = sourceViewController.item {
