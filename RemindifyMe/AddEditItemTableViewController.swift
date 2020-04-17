@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddEditItemTableViewController: UITableViewController {
+class AddEditItemTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var item: Item?
     
     @IBOutlet weak var notificationDaysOutlet: UITextField!
@@ -18,6 +18,8 @@ class AddEditItemTableViewController: UITableViewController {
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var daysBeforeLabel: UILabel!
     @IBOutlet weak var notificationDateView: UIView!
+    @IBOutlet weak var choosePhotoButton: UIButton!
+    var imagePicker = UIImagePickerController()
     
     private var datePicker: UIDatePicker?
     
@@ -34,11 +36,14 @@ class AddEditItemTableViewController: UITableViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
         
         view.addGestureRecognizer(tapGesture)
+        choosePhotoButton.setTitle("Choose image", for: .normal)
         
         notificationDateView.isHidden = true
         if let item = item {
             itemNameTextField.text = item.name
             expireDateTextField.text = item.expiration_date
+            choosePhotoButton.setTitle("", for: .normal)
+            
             itemImage.image = item.image
             if item.notificationDaysBefore != nil {
                 notificationDateView.isHidden = false
@@ -51,6 +56,27 @@ class AddEditItemTableViewController: UITableViewController {
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    
+    @IBAction func choosePhotoButtonClicked(_ sender: UIButton) {
+        imagePicker.delegate = self
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.allowsEditing = false
+        
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("\n\nin\n\n")
+        self.dismiss(animated: true, completion: { () -> Void in
+
+        })
+        guard let image = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        itemImage.image = image
+        choosePhotoButton.setTitle("", for: .normal)
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
