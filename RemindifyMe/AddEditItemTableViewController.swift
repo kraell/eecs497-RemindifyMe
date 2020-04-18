@@ -50,6 +50,7 @@ class AddEditItemTableViewController: UITableViewController, UINavigationControl
                 notificationDaysOutlet.text = item.notificationDaysBefore
             }
         }
+        datePicker?.minimumDate = Date()
         
         updateSaveButtonState()
     }

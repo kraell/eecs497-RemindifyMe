@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Item Table View Controller-->
         <scene sceneID="2GS-qO-QCp">
             <objects>
                 <tableViewController id="QfL-KM-roJ" customClass="ItemTableViewController" customModule="RemindifyMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,13 +20,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remindify Me!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bv1-tL-SHz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
-                                    <color key="backgroundColor" red="0.87226470612547036" green="0.98538559675216675" blue="0.87607802013833369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                    <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qkj-qo-aAK">
                                     <rect key="frame" x="348" y="99" width="62" height="30"/>
                                     <color key="tintColor" red="0.04866963919666735" green="0.71243384804750354" blue="0.064513042457847586" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,16 +28,16 @@
                                         <segue destination="l2Z-zq-3kE" kind="presentation" identifier="NewItem" id="KOx-d5-OnW"/>
                                     </connections>
                                 </button>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="remindifyme" translatesAutoresizingMaskIntoConstraints="NO" id="wb4-xJ-8Mp">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstItem="Muf-cE-TKQ" firstAttribute="trailing" secondItem="bv1-tL-SHz" secondAttribute="trailing" id="5y6-Vf-IrJ"/>
-                                <constraint firstItem="bv1-tL-SHz" firstAttribute="top" secondItem="Muf-cE-TKQ" secondAttribute="top" id="CSK-rI-q0W"/>
                                 <constraint firstItem="Muf-cE-TKQ" firstAttribute="trailing" secondItem="Qkj-qo-aAK" secondAttribute="trailing" constant="4" id="EEK-8l-dLZ"/>
-                                <constraint firstItem="Muf-cE-TKQ" firstAttribute="bottom" secondItem="bv1-tL-SHz" secondAttribute="bottom" id="FRm-Xx-ybp"/>
                                 <constraint firstItem="Qkj-qo-aAK" firstAttribute="bottom" secondItem="Muf-cE-TKQ" secondAttribute="bottom" constant="1" id="LKI-2S-T8I"/>
                                 <constraint firstItem="Muf-cE-TKQ" firstAttribute="trailing" secondItem="Qkj-qo-aAK" secondAttribute="trailing" constant="4" id="epX-jJ-TKE"/>
-                                <constraint firstItem="bv1-tL-SHz" firstAttribute="leading" secondItem="Muf-cE-TKQ" secondAttribute="leading" id="mBb-W0-J6O"/>
                             </constraints>
                             <viewLayoutGuide key="safeArea" id="Muf-cE-TKQ"/>
                         </view>
@@ -133,7 +126,7 @@
                             <outlet property="delegate" destination="QfL-KM-roJ" id="raq-VM-yaA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="ART-70-5ga"/>
+                    <navigationItem key="navigationItem" id="ART-70-5ga"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivK-xP-7f5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -144,7 +137,7 @@
             <objects>
                 <tableViewController id="y6W-Zc-33e" customClass="AddEditItemTableViewController" customModule="RemindifyMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Bgr-me-rhC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Vrf-9e-vwJ">
@@ -394,7 +387,7 @@
                 <navigationController id="l2Z-zq-3kE" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="2Fn-2x-8kB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jxC-Nd-XBf">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -424,8 +417,9 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="64" height="48"/>
+        <image name="remindifyme" width="500" height="468"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3RW-iW-7fe"/>
+        <segue reference="kJL-tf-uHs"/>
     </inferredMetricsTieBreakers>
 </document>
