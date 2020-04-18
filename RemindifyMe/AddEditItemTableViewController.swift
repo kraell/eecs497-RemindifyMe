@@ -122,11 +122,17 @@ class AddEditItemTableViewController: UITableViewController, UINavigationControl
         
         let itemName = itemNameTextField.text ?? ""
         let expireDate = expireDateTextField.text ?? ""
-        if let itemImage = itemImage.image {
-            item = Item(name: itemName, expiration_date: expireDate, image: itemImage)
-        } else {
-            item = Item(name: itemName, expiration_date: expireDate, image: #imageLiteral(resourceName: "clear"))
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        if let date = dateFormatter.date(from: expireDate) {
+            if let itemImage = itemImage.image {
+                item = Item(name: itemName, expire_date: date, expiration_date: expireDate, image: itemImage)
+            } else {
+                item = Item(name: itemName, expire_date: date, expiration_date: expireDate, image: #imageLiteral(resourceName: "clear"))
+            }
         }
+        
         if notificationDaysOutlet.text != "" {
             item?.notificationDaysBefore = notificationDaysOutlet.text
         }

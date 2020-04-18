@@ -11,15 +11,26 @@ import UIKit
 class ItemTableViewController: UITableViewController,
         UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var items: [Item] = [
-        Item(name: "Banana", expiration_date: "03/27/2020", image: #imageLiteral(resourceName: "banana")),
-        Item(name: "Milk", expiration_date: "03/28/2020", image: #imageLiteral(resourceName: "milk"))
+        Item(name: "Banana", expire_date: Date(), expiration_date: "03/27/2020", image: #imageLiteral(resourceName: "banana")),
+        Item(name: "Milk", expire_date: Date(), expiration_date: "03/28/2020", image: #imageLiteral(resourceName: "milk"))
     ]
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
+        sortItems()
+    }
+    
+    func sortItems() {
+        items = items.sorted(by: {
+            $0.expire_date.compare($1.expire_date) == .orderedAscending
+        })
+        self.tableView.reloadData()
+        
     }
     
     @IBAction func unwindToItemTable(unwindSegue: UIStoryboardSegue) {
@@ -41,6 +52,7 @@ class ItemTableViewController: UITableViewController,
                 items.append(item)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
+            sortItems()
         }
     }
     
