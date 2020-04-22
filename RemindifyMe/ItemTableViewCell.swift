@@ -27,7 +27,22 @@ class ItemTableViewCell: UITableViewCell {
     
     func update(with item: Item) {
         itemName.text = item.name
-        expireDate.text = item.expiration_date
+        if Calendar.current.isDateInToday(item.expire_date) {
+            expireDate.text = "Today"
+        }
+        else {
+            var diffInDays = Calendar.current.dateComponents([.day], from: Date(), to: item.expire_date).day
+            diffInDays = (diffInDays ?? 0) + 1
+            if diffInDays ?? 1 <= 0 {
+                expireDate.text = "Expired"
+            }
+            else if diffInDays == 1 {
+                expireDate.text = "Tomorrow"
+            }
+            else {
+                expireDate.text = "\(diffInDays ?? 1) days"
+            }
+        }
         itemImage.image = item.image
     }
 }

@@ -20,42 +20,20 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qkj-qo-aAK">
-                                    <rect key="frame" x="348" y="99" width="62" height="30"/>
-                                    <color key="tintColor" red="0.04866963919666735" green="0.71243384804750354" blue="0.064513042457847586" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" title="Add Item"/>
-                                    <connections>
-                                        <segue destination="l2Z-zq-3kE" kind="presentation" identifier="NewItem" id="KOx-d5-OnW"/>
-                                    </connections>
-                                </button>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="remindifyme" translatesAutoresizingMaskIntoConstraints="NO" id="wb4-xJ-8Mp">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstItem="Muf-cE-TKQ" firstAttribute="trailing" secondItem="Qkj-qo-aAK" secondAttribute="trailing" constant="4" id="EEK-8l-dLZ"/>
-                                <constraint firstItem="Qkj-qo-aAK" firstAttribute="bottom" secondItem="Muf-cE-TKQ" secondAttribute="bottom" constant="1" id="LKI-2S-T8I"/>
-                                <constraint firstItem="Muf-cE-TKQ" firstAttribute="trailing" secondItem="Qkj-qo-aAK" secondAttribute="trailing" constant="4" id="epX-jJ-TKE"/>
-                            </constraints>
-                            <viewLayoutGuide key="safeArea" id="Muf-cE-TKQ"/>
-                        </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="7XO-DE-GLu">
-                            <rect key="frame" x="0.0" y="327" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Hy-E9-0c7">
-                                    <rect key="frame" x="153" y="0.0" width="108" height="36"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Days To Expire" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5r-8G-vz6">
+                                    <rect key="frame" x="293" y="99" width="113" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <state key="normal" image="camera" catalog="system"/>
-                                    <connections>
-                                        <segue destination="J4R-8i-HYa" kind="presentation" id="cqQ-Dz-kOx"/>
-                                    </connections>
-                                </button>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.87614211090000005" green="1" blue="0.92920457899999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <viewLayoutGuide key="safeArea" id="Muf-cE-TKQ"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemCell" id="7ol-Ap-Dcx" customClass="ItemTableViewCell" customModule="RemindifyMe" customModuleProvider="target">
@@ -91,13 +69,13 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V88-kO-gQc">
                                                             <rect key="frame" x="0.0" y="0.0" width="144.5" height="105.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="0.20819040389999999" green="0.29471603940000002" blue="0.74109317450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6b-Ig-yOc">
                                                             <rect key="frame" x="144.5" y="0.0" width="144.5" height="105.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -105,6 +83,7 @@
                                             </subviews>
                                         </stackView>
                                     </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="fHw-s9-keH" secondAttribute="bottom" id="GnS-LZ-dig"/>
                                         <constraint firstItem="fHw-s9-keH" firstAttribute="leading" secondItem="vZE-3E-USl" secondAttribute="leading" id="KNZ-33-otH"/>
@@ -126,7 +105,26 @@
                             <outlet property="delegate" destination="QfL-KM-roJ" id="raq-VM-yaA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ART-70-5ga"/>
+                    <toolbarItems>
+                        <barButtonItem title="Scan New Coupon" width="195" id="1o7-UH-vPE">
+                            <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                        <barButtonItem title="Scan New Item" width="260" id="0G7-ym-4dz">
+                            <color key="tintColor" red="0.20819040391326626" green="0.29471603936338087" blue="0.74109317450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="J4R-8i-HYa" kind="presentation" id="RxV-7Z-2To"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="ART-70-5ga">
+                        <barButtonItem key="rightBarButtonItem" title="Add Item" id="QO0-iT-VSK">
+                            <color key="tintColor" red="0.048669639200000003" green="0.71243384799999998" blue="0.064513042460000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="l2Z-zq-3kE" kind="presentation" id="uN8-Zc-uaS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivK-xP-7f5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -401,11 +399,15 @@
         <!--Navigation Controller-->
         <scene sceneID="UPQ-PC-tik">
             <objects>
-                <navigationController id="F2p-4b-Iwc" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="F2p-4b-Iwc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wfg-zc-evl">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J6R-9J-Trb">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="QfL-KM-roJ" kind="relationship" relationship="rootViewController" id="btv-AT-6Lw"/>
                     </connections>
@@ -416,10 +418,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera" catalog="system" width="64" height="48"/>
         <image name="remindifyme" width="500" height="468"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kJL-tf-uHs"/>
+        <segue reference="uN8-Zc-uaS"/>
     </inferredMetricsTieBreakers>
 </document>
