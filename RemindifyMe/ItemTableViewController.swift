@@ -33,6 +33,30 @@ class ItemTableViewController: UITableViewController,
         
     }
     
+    @IBAction func takeCouponPhotoButtonPressed(_ sender: UIBarButtonItem) {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.allowsEditing = true
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    
+    var takenPhoto: UIImage?
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+        
+        
+        // print out the image size as a test
+        print(image.size)
+        takenPhoto = image
+        self.performSegue(withIdentifier: "NewItemPicture", sender: self)
+    }
+
     @IBAction func unwindToItemTable(unwindSegue: UIStoryboardSegue) {
         guard unwindSegue.identifier == "saveUnwind" else {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
@@ -67,6 +91,11 @@ class ItemTableViewController: UITableViewController,
             let item = items[indexPath.row]
             let top = segue.destination as! UINavigationController
             let addEditItemTableViewController = top.topViewController as! AddEditItemTableViewController
+            addEditItemTableViewController.item = item
+        }
+        else if segue.identifier == "NewItemPicture" {
+            let item = Item(name: "", expire_date: Date(), expiration_date: "", image: takenPhoto!)
+            let addEditItemTableViewController = segue.destination as! AddEditItemTableViewController
             addEditItemTableViewController.item = item
         }
     }

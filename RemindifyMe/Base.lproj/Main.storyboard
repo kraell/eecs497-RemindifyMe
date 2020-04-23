@@ -106,8 +106,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Scan Coupon" width="195" id="1o7-UH-vPE">
+                        <barButtonItem title="Take Photo" width="195" id="1o7-UH-vPE">
                             <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="takeCouponPhotoButtonPressed:" destination="QfL-KM-roJ" id="UiC-xa-7xT"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Scan Item" width="260" id="0G7-ym-4dz">
                             <color key="tintColor" red="0.20819040391326626" green="0.29471603936338087" blue="0.74109317450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,17 +128,20 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="y6W-Zc-33e" kind="show" identifier="NewItemPicture" id="7cw-r2-cT9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivK-xP-7f5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-717.39130434782612" y="166.74107142857142"/>
+            <point key="canvasLocation" x="-714" y="167"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Edit Item Information-->
         <scene sceneID="S2b-Be-wau">
             <objects>
                 <tableViewController id="y6W-Zc-33e" customClass="AddEditItemTableViewController" customModule="RemindifyMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Bgr-me-rhC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Vrf-9e-vwJ">
@@ -282,7 +288,7 @@
                             <outlet property="delegate" destination="y6W-Zc-33e" id="7Ex-8H-Qcd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Wje-Zh-CtP">
+                    <navigationItem key="navigationItem" title="Edit Item Information" id="Wje-Zh-CtP">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0bg-IP-1CU">
                             <color key="tintColor" red="0.050627489849999999" green="0.74109317450000001" blue="0.067108231259999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -421,6 +427,7 @@
         <image name="remindifyme" width="500" height="468"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uN8-Zc-uaS"/>
+        <segue reference="kJL-tf-uHs"/>
+        <segue reference="7cw-r2-cT9"/>
     </inferredMetricsTieBreakers>
 </document>
