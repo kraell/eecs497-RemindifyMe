@@ -106,10 +106,10 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Scan New Coupon" width="195" id="1o7-UH-vPE">
+                        <barButtonItem title="Scan Coupon" width="195" id="1o7-UH-vPE">
                             <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
-                        <barButtonItem title="Scan New Item" width="260" id="0G7-ym-4dz">
+                        <barButtonItem title="Scan Item" width="260" id="0G7-ym-4dz">
                             <color key="tintColor" red="0.20819040391326626" green="0.29471603936338087" blue="0.74109317450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="J4R-8i-HYa" kind="presentation" id="RxV-7Z-2To"/>
