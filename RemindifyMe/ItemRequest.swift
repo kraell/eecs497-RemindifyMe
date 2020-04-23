@@ -34,7 +34,12 @@ struct ItemRequest {
                 let decoder = JSONDecoder()
                 let upcResponse = try decoder.decode(UpcResponse.self, from: jsonData)
                 let item = upcResponse.items
-                completion(.success(item[0]))
+                if (item.count <= 0) {
+                    completion(.failure(.noUPCFound))
+                }
+                else {
+                    completion(.success(item[0]))
+                }
             }catch {
                 completion(.failure(.otherError))
             }
