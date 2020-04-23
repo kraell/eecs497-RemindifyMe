@@ -352,7 +352,7 @@
                                     <constraint firstAttribute="height" constant="55" id="IDS-m8-iis"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No barcode detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8M5-TH-Bnq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Barcode Detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8M5-TH-Bnq">
                                 <rect key="frame" x="0.0" y="773" width="414" height="35"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -391,7 +391,7 @@
                 <navigationController id="l2Z-zq-3kE" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="2Fn-2x-8kB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jxC-Nd-XBf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -427,7 +427,7 @@
         <image name="remindifyme" width="500" height="468"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kJL-tf-uHs"/>
+        <segue reference="3RW-iW-7fe"/>
         <segue reference="7cw-r2-cT9"/>
     </inferredMetricsTieBreakers>
 </document>

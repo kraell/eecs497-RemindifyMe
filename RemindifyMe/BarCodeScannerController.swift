@@ -110,6 +110,9 @@ class BarCodeScannerController: UIViewController {
     }
 
         func showUPC(decodedURL: String) {
+            let group = DispatchGroup()
+            group.enter()
+            messageLabel.text = "Found Barcode"
             
             if presentedViewController != nil {
                 return
@@ -126,22 +129,36 @@ class BarCodeScannerController: UIViewController {
                         let url = URL(string: item.images[0])
                         self!.downloadItemImage(from: url!)
                     }
+                    group.leave()
                 case .failure(let error):
                     print(error)
+                    group.leave()
                 }
             }
-            
-            let alertPrompt = UIAlertController(title: "UPC", message: "Do you want to add UPC number \(decodedURL)?", preferredStyle: .actionSheet)
-            let confirmAction = UIAlertAction(title: "Add item to list", style: UIAlertAction.Style.default, handler: { _ in
-                self.performSegue(withIdentifier: "NewScannedObject", sender: nil)
-            })
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
-            
-            alertPrompt.addAction(confirmAction)
-            alertPrompt.addAction(cancelAction)
-            
-            present(alertPrompt, animated: true, completion: nil)
+            group.notify(queue: .main) {
+                if self.item == nil {
+                        let alertPrompt = UIAlertController(title: "Barcode Not Found", message: "", preferredStyle: .actionSheet)
+                        
+                        let cancelAction = UIAlertAction(title: "Scan Another Item", style: UIAlertAction.Style.cancel, handler: nil)
+                        
+                        alertPrompt.addAction(cancelAction)
+                    
+                        self.present(alertPrompt, animated: true, completion: nil)
+                }
+                else {
+                    let alertPrompt = UIAlertController(title: "\(self.item?.name ?? "ITEM NOT FOUND")", message: "", preferredStyle: .actionSheet)
+                    let confirmAction = UIAlertAction(title: "Add item to list", style: UIAlertAction.Style.default, handler: { _ in
+                        self.performSegue(withIdentifier: "NewScannedObject", sender: nil)
+                    })
+                    
+                    let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
+                    
+                    alertPrompt.addAction(confirmAction)
+                    alertPrompt.addAction(cancelAction)
+                
+                    self.present(alertPrompt, animated: true, completion: nil)
+                }
+            }
         }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -196,7 +213,7 @@ extension BarCodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            messageLabel.text = "No QR code is detected"
+            messageLabel.text = "No Barcode Detected"
             return
         }
         
@@ -210,7 +227,8 @@ extension BarCodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
             
             if metadataObj.stringValue != nil {
                 showUPC(decodedURL: metadataObj.stringValue!)
-                messageLabel.text = metadataObj.stringValue
+                //messageLabel.text = metadataObj.stringValue
+               // messageLabel.text = "No Barcode Detected"
             }
         }
     }
