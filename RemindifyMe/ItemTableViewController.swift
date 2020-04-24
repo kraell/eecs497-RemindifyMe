@@ -7,6 +7,44 @@
 //
 
 import UIKit
+import UserNotifications
+
+func registerLocal() {
+    let center = UNUserNotificationCenter.current()
+
+    center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+        if granted {
+            print("Yay!")
+        } else {
+            print("D'oh")
+        }
+    }
+}
+
+func scheduleLocal() {
+    let center = UNUserNotificationCenter.current()
+    center.removeAllPendingNotificationRequests()
+    let content = UNMutableNotificationContent()
+    
+    // ************* Change these two for a notification
+    
+    content.title = "Banana" // item name
+    content.body = "Your [ITEM] will expire in 3 days!" // change the name and the days to be correct
+    
+    // ****************
+    content.categoryIdentifier = "alarm"
+    content.userInfo = ["customData": "fizzbuzz"]
+    content.sound = UNNotificationSound.default
+
+    var dateComponents = DateComponents()
+    dateComponents.hour = 10
+    dateComponents.minute = 30
+    //let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7, repeats: false)
+
+    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+    center.add(request)
+}
 
 class ItemTableViewController: UITableViewController,
         UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -22,6 +60,8 @@ class ItemTableViewController: UITableViewController,
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
+        registerLocal()
+        //scheduleLocal()
         sortItems()
     }
     
