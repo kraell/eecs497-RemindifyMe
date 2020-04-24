@@ -120,6 +120,11 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="ART-70-5ga">
+                        <barButtonItem key="leftBarButtonItem" title="                  " id="3SK-OC-1cz">
+                            <connections>
+                                <action selector="refreshTable:" destination="QfL-KM-roJ" id="TmZ-7x-Iqi"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Item" id="QO0-iT-VSK">
                             <color key="tintColor" red="0.048669639200000003" green="0.71243384799999998" blue="0.064513042460000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -170,7 +175,7 @@
                                     <rect key="frame" x="8" y="9" width="61" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     <connections>
                                         <action selector="notificationExpirationTextField:" destination="y6W-Zc-33e" eventType="editingChanged" id="p7F-JO-3Pf"/>
                                     </connections>
@@ -391,7 +396,7 @@
                 <navigationController id="l2Z-zq-3kE" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="2Fn-2x-8kB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jxC-Nd-XBf">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -427,7 +432,7 @@
         <image name="remindifyme" width="500" height="468"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3RW-iW-7fe"/>
+        <segue reference="uN8-Zc-uaS"/>
         <segue reference="7cw-r2-cT9"/>
     </inferredMetricsTieBreakers>
 </document>

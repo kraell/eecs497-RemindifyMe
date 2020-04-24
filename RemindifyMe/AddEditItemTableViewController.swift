@@ -41,7 +41,12 @@ class AddEditItemTableViewController: UITableViewController, UINavigationControl
         notificationDateView.isHidden = true
         if let item = item {
             itemNameTextField.text = item.name
-            expireDateTextField.text = item.expiration_date
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            
+            expireDateTextField.text = dateFormatter.string(from: item.expire_date)
+            
             choosePhotoButton.setTitle("", for: .normal)
             
             itemImage.image = item.image
@@ -127,9 +132,9 @@ class AddEditItemTableViewController: UITableViewController, UINavigationControl
         dateFormatter.dateFormat = "MM/dd/yyyy"
         if let date = dateFormatter.date(from: expireDate) {
             if let itemImage = itemImage.image {
-                item = Item(name: itemName, expire_date: date, expiration_date: expireDate, image: itemImage)
+                item = Item(name: itemName, expire_date: date, image: itemImage)
             } else {
-                item = Item(name: itemName, expire_date: date, expiration_date: expireDate, image: #imageLiteral(resourceName: "clear"))
+                item = Item(name: itemName, expire_date: date, image: #imageLiteral(resourceName: "clear"))
             }
         }
         

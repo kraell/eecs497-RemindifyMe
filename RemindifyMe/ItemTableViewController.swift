@@ -11,8 +11,8 @@ import UIKit
 class ItemTableViewController: UITableViewController,
         UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var items: [Item] = [
-        Item(name: "Banana", expire_date: Date(), expiration_date: "03/27/2020", image: #imageLiteral(resourceName: "banana")),
-        Item(name: "Milk", expire_date: Date(), expiration_date: "03/28/2020", image: #imageLiteral(resourceName: "milk"))
+        Item(name: "Banana", expire_date: Date(), image: #imageLiteral(resourceName: "banana")),
+        Item(name: "Milk", expire_date: Date(), image: #imageLiteral(resourceName: "milk"))
     ]
     
     
@@ -80,6 +80,9 @@ class ItemTableViewController: UITableViewController,
         }
     }
     
+    @IBAction func refreshTable(_ sender: UIBarButtonItem) {
+        self.tableView.reloadData()
+    }
     // MARK: - Table view data source
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -94,7 +97,7 @@ class ItemTableViewController: UITableViewController,
             addEditItemTableViewController.item = item
         }
         else if segue.identifier == "NewItemPicture" {
-            let item = Item(name: "", expire_date: Date(), expiration_date: "", image: takenPhoto!)
+            let item = Item(name: "", expire_date: Date(), image: takenPhoto!)
             let addEditItemTableViewController = segue.destination as! AddEditItemTableViewController
             addEditItemTableViewController.item = item
         }

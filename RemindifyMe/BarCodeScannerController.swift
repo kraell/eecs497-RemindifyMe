@@ -124,7 +124,7 @@ class BarCodeScannerController: UIViewController {
                 case .success(let item):
                     
                     self?.item =
-                        Item(name: item.title, expire_date: Date(), expiration_date: "", image: #imageLiteral(resourceName: "clear"))
+                        Item(name: item.title, expire_date: Date(), image: #imageLiteral(resourceName: "clear"))
                     if item.images.count > 0 {
                         let url = URL(string: item.images[0])
                         self!.downloadItemImage(from: url!)
