@@ -82,6 +82,43 @@ class ItemTableViewController: UITableViewController,
     
     @IBAction func refreshTable(_ sender: UIBarButtonItem) {
         self.tableView.reloadData()
+        var expiredItems = [String]()
+        var newItems: [Item] = []
+        for item in items {
+            if Calendar.current.isDateInToday(item.expire_date) {
+                newItems.append(item)
+            }
+            else {
+                var diffInDays = Calendar.current.dateComponents([.day], from: Date(), to: item.expire_date).day
+                diffInDays = (diffInDays ?? 0) + 1
+                if diffInDays ?? 1 <= 0 {
+                    expiredItems.append(item.name)
+                }
+                else {
+                    newItems.append(item)
+                }
+            }
+        }
+        
+        if expiredItems.count > 0 {
+            var expiredItemsString: String = ""
+            for i in expiredItems {
+                expiredItemsString = expiredItemsString + i + "\n"
+            }
+            let alertPrompt = UIAlertController(title: "Expired Items", message: "\(expiredItemsString)", preferredStyle: .actionSheet)
+            
+                let confirmAction = UIAlertAction(title: "Remove from list", style: UIAlertAction.Style.default, handler: { _ in
+                    self.items = newItems
+                    self.tableView.reloadData()
+                })
+                
+                let cancelAction = UIAlertAction(title: "Keep all items", style: UIAlertAction.Style.cancel, handler: nil)
+                
+                alertPrompt.addAction(confirmAction)
+                alertPrompt.addAction(cancelAction)
+            
+                self.present(alertPrompt, animated: true, completion: nil)
+        }
     }
     // MARK: - Table view data source
     
